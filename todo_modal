@@ -1,0 +1,35 @@
+<?php
+	class Model_taskM extends CI_Model
+	 {
+		public function __construct()	
+		{
+  			$this->load->database(); 
+		}
+		function get_all()
+		{
+			$result = $this->db->query("SELECT * FROM todo");
+			return $query->result_array();
+
+		}
+		function get_task($id)
+		{
+			$query = $this->db->get_where('todo',array('id' => $id));
+			return $query->result_array();
+
+		}
+		function update_task($id,$data)
+
+		{
+			$this->db->where('id',$id);
+			$this->db->update('todo',$data);
+		}
+
+		function delete_task($id)
+		{
+			$this->db->delete('todo',array('id' => $id));
+		
+		}
+
+	}
+
+	?>
